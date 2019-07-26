@@ -1,0 +1,30 @@
+{
+  "name": "observer-jobs",
+  "version": "1.0.0",
+  "description": "Observer jobs for the Maprox platform",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node .",
+    "eslint": "eslint ./src/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maprox/observer-jobs.git"
+  },
+  "author": "aintsay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maprox/observer-jobs/issues"
+  },
+  "homepage": "https://github.com/maprox/observer-jobs#readme",
+  "dependencies": {
+    "@turf/turf": "^5.1.6",
+    "amqplib": "^0.5.3",
+    "pg": "^7.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
