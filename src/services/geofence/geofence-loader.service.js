@@ -9,21 +9,23 @@ class GeofenceLoader {
     this.db = database;
     this.limit = limit;
     this.offset = offset;
-  }
-
-  init() {
     setInterval(() => this.update(), UPDATE_EACH * 1000);
-    return this.update();
   }
 
-  async update() {
-    this.list = await this.getGeofences(this.limit, this.offset);
-    console.log('geofence list has %s items', this.list.length);
-    return this.list;
+  update() {
+    if (!this.updatePromise) {
+      this.updatePromise = new Promise(async (resolve) => {
+        this.list = await this.getGeofences(this.limit, this.offset);
+        console.log('[*] Geofence list updated, and has got %s items', this.list.length);
+        resolve(this.list);
+        this.updatePromise = null;
+      });
+    }
+    return this.updatePromise;
   }
 
   async load() {
-    return this.list || this.init();
+    return this.list || this.update();
   }
 
   async getGeofences(limit, offset) {

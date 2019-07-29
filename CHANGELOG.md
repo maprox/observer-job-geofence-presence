@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+## 0.4.1 (2019-07-29)
+* Fix concurrent loading of geofences
+
 ## 0.4.0 (2019-07-29)
 * Update geofence list periodically
 * Make notification exchange and routing key configurable
