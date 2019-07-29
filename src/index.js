@@ -1,22 +1,11 @@
-const config = require('./config');
 const broker = require('./services/broker/broker.service');
+const config = require('./config');
 const dumpError = require('./utils');
-const geofenceLoader = require('./services/geofence/geofence-loader.service');
-const packetLoader = require('./services/packet/packet-loader.service');
-const presenceService = require('./services/geofence/presence.service');
+const job = require('./job');
 
 broker.receive(config.amqp.queue, async (data, message, channel) => {
   try {
-    const packetId = data.id;
-    const [packet] = await packetLoader.getPacketById(packetId);
-    if (!packet || packet.isDeleted()) {
-      channel.ack(message);
-      return;
-    }
-
-    (await geofenceLoader.load())
-      .filter(geofence => geofence.isEnabled())
-      .forEach(geofence => presenceService.handle(geofence, packet));
+    await job.handle(data);
 
     await broker.send(
       'x.notification',

@@ -23,7 +23,6 @@
     connection string
 
 * **AMQP_EXCHANGE** - exchange name in AMQP server.
-    **Telegrembo** listens for messages in a queue bound to this exchange
 
 * **AMQP_QUEUE_NAME** - AMQP queue name to listen for messages
 
