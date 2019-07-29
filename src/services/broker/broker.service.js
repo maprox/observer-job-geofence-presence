@@ -44,8 +44,13 @@ module.exports = {
     console.log(' [+] Awaiting for data...');
 
     return channel.consume(queue, (message) => {
-      const data = JSON.parse(message.content.toString());
-      callback(data, message, channel);
+      try {
+        const data = JSON.parse(message.content.toString());
+        callback(data, message, channel);
+      } catch (e) {
+        channel.ack(message);
+        console.error(message.content.toString(), e);
+      }
     });
   },
 

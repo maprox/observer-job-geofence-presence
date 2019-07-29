@@ -111,6 +111,14 @@ class PresenceService {
       return;
     }
 
+    console.log(
+      'packet #%s was %s, now %s geofence #%s',
+      packet.id,
+      wasInside ? 'in' : 'out',
+      isInside ? 'in' : 'out',
+      geofence.id,
+    );
+
     const nextState = presenceList[prevStateIndex - 1] || {};
     if (nextState.state === undefined) {
       const id = await insertPresence(
@@ -123,7 +131,7 @@ class PresenceService {
         id,
         id_geofence: geofence.id,
         id_device: packet.deviceId,
-        state: isInside,
+        state: isInside ? 1 : 0,
         sdt: packet.time,
       });
     } else {

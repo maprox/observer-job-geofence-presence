@@ -33,7 +33,7 @@ module.exports = class Geofence extends Item {
     const packets = (!json || !json.coords_cache) ? [] : json.coords_cache
       .split(', ')
       .map((coords) => {
-        const [latitude, longitude] = coords.split(' ');
+        const [longitude, latitude] = coords.split(' ');
         return new Packet(
           undefined,
           undefined,
