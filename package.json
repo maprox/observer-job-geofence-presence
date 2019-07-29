@@ -1,22 +1,24 @@
 {
-  "name": "observer-jobs",
+  "name": "observer-job-geofence-presence",
   "version": "1.0.0",
-  "description": "Observer jobs for the Maprox platform",
+  "description": "Observer Is-Packet-In-Geofence job for the Maprox platform",
   "main": "src/index.js",
   "scripts": {
     "start": "node .",
+    "test": "jest",
+    "test-coverage": "jest --coverage",
     "eslint": "eslint ./src/**/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maprox/observer-jobs.git"
+    "url": "git+https://github.com/maprox/observer-job-geofence-presence.git"
   },
   "author": "aintsay",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maprox/observer-jobs/issues"
+    "url": "https://github.com/maprox/observer-job-geofence-presence/issues"
   },
-  "homepage": "https://github.com/maprox/observer-jobs#readme",
+  "homepage": "https://github.com/maprox/observer-job-geofence-presence#readme",
   "dependencies": {
     "@turf/turf": "^5.1.6",
     "amqplib": "^0.5.3",
@@ -25,6 +27,7 @@
   "devDependencies": {
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-plugin-import": "^2.18.2",
+    "jest": "^24.8.0"
   }
 }
