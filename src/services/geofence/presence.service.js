@@ -112,9 +112,10 @@ class PresenceService {
     }
 
     console.log(
-      'packet #%s was %s, now %s geofence #%s',
+      'packet #%s was %s, now (%s) %s geofence #%s',
       packet.id,
       wasInside ? 'in' : 'out',
+      packet.time.toISOString(),
       isInside ? 'in' : 'out',
       geofence.id,
     );

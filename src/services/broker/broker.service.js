@@ -72,7 +72,5 @@ module.exports = {
         timestamp: new Date().getTime(),
       },
     );
-
-    console.log(' [>] Sent %s to %s', data, routingKey);
   },
 };
