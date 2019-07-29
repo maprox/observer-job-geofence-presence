@@ -8,8 +8,8 @@ broker.receive(config.amqp.queue, async (data, message, channel) => {
     await job.handle(data);
 
     await broker.send(
-      'x.notification',
-      'notification.process.onpacket',
+      config.amqp.notification.exchange,
+      config.amqp.notification.routingKey,
       data,
     );
 

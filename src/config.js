@@ -12,6 +12,10 @@ module.exports = {
       name: process.env.AMQP_QUEUE_NAME,
       routingKey: process.env.AMQP_QUEUE_ROUTING_KEY,
     },
+    notification: {
+      exchange: process.env.AMQP_NOTIFICATION_EXCHANGE,
+      routingKey: process.env.AMQP_NOTIFICATION_ROUTING_KEY,
+    },
   },
 
   query: {

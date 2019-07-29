@@ -2,6 +2,8 @@ const db = require('../database/database.service');
 const config = require('../../config');
 const Geofence = require('../../model/geofence');
 
+const UPDATE_EACH = 60; // in seconds
+
 class GeofenceLoader {
   constructor(database, limit, offset) {
     this.db = database;
@@ -10,6 +12,7 @@ class GeofenceLoader {
   }
 
   init() {
+    setInterval(() => this.update(), UPDATE_EACH * 1000);
     return this.update();
   }
 

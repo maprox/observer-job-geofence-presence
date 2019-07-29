@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+## 0.4.0 (2019-07-29)
+* Update geofence list periodically
+* Make notification exchange and routing key configurable
+
 ## 0.3.0 (2019-07-29)
 * Fix reading geofence coords cache (switch latitude and longitude)
 
