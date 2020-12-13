@@ -15,6 +15,7 @@ broker.receive(config.amqp.queue, async (data, message, channel) => {
       data,
     );
 
+    console.log('sent', data);
     channel.ack(message);
   } catch (e) {
     dumpError(e);
