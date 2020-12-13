@@ -55,6 +55,7 @@ received and added to the observer database.
 * **AMQP_QUEUE_ROUTING_KEY** - Routing key for the queue
 * **AMQP_NOTIFICATION_EXCHANGE** - AMQP exchange for sending notifications
 * **AMQP_NOTIFICATION_ROUTING_KEY** - Routing key for sending notifications
+* **AMQP_MESSAGES_COUNT_LIMIT** - Limit messages count consumed by the channel at once
 * **PGHOST** - Postgres host
 * **PGDATABASE** - Postgres database
 * **PGUSER** - Postgres username

@@ -31,6 +31,11 @@ module.exports = {
    */
   async receive(queueData, callback) {
     const channel = await getChannel();
+    const { messagesCountLimit } = config.amqp;
+    if (messagesCountLimit) {
+      console.log(' [>] Set channel messages count limit to %s', messagesCountLimit);
+      channel.prefetch(+messagesCountLimit);
+    }
     const qok = await channel.assertQueue(
       queueData.name,
       queueData.options || { durable: true },

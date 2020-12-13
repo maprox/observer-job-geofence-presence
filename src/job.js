@@ -19,11 +19,14 @@ class Job {
    */
   async handle(data) {
     const packetId = data.id;
+    console.log(' ~ loading packet %s', packetId);
     const [packet] = await this.packetLoader.getPacketById(packetId);
     if (!packet || packet.isDeleted()) {
+      console.log('[!] packet is not found or deleted');
       return true;
     }
 
+    console.log(' ~ loading geofence list');
     (await this.geofenceLoader.load())
       .filter(geofence => geofence.isEnabled())
       .forEach(geofence => this.presenceService.handle(geofence, packet));

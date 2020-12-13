@@ -5,11 +5,13 @@ const job = require('./job');
 
 broker.receive(config.amqp.queue, async (data, message, channel) => {
   try {
+    console.log('received', data);
+
     await job.handle(data);
 
     await broker.send(
-      config.amqp.notification.exchange,
-      config.amqp.notification.routingKey,
+      config.amqp.outbound.exchange,
+      config.amqp.outbound.routingKey,
       data,
     );
 
