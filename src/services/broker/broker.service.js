@@ -12,8 +12,11 @@ let channelInstance;
 
 async function getChannel() {
   if (!channelInstance) {
-    console.log(' [-] Connecting to %s', config.amqp.connection);
-    const connection = await amqp.connect(config.amqp.connection);
+    const user = `${config.amqp.username}:${config.amqp.password}`
+    const host = `${config.amqp.host}:${config.amqp.port}`
+    const connectionString = `amqp://${user}@${host}//`;
+    console.log(' [-] Connecting to %s', connectionString);
+    const connection = await amqp.connect(connectionString);
     channelInstance = await connection.createChannel();
     console.log(' [+] Connected');
     await getExchange(channelInstance);
